@@ -5,7 +5,6 @@ import {
     Text,
     VStack
   } from '@chakra-ui/react';
-import ParticlesBg from 'particles-bg';
 
 export default function Landing(props) {
 
