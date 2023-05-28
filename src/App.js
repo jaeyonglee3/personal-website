@@ -14,6 +14,7 @@ import About from "./components/sections/About";
 import Projects from "./components/sections/Projects";
 import Footer from "./components/navigation/Footer";
 import theme from "./theme"
+import ParticlesBg from 'particles-bg';
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
       <About />
       <Projects />
       <Footer />
+      {/* <ParticlesBg type="cobweb" num={250} color="#5E81AC" bg={true} />  */}
+      <ParticlesBg type="cobweb" num={150} color="#D3D3D3" bg={true} /> 
 
     </ChakraProvider>
   );

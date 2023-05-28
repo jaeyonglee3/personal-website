@@ -14,7 +14,7 @@ export default function navbar() {
     return (
 
     // TODO: Fix the position of the navbar to the top of the screen
-    <Box width="100vw" position="fixed" bg={"blue.900"}>
+    <Box width="100vw" position="fixed" bg="gray.900">
         <Flex as="nav" p="10px" alignItems="center">
 
             <Heading size="md" pl="15px">Jaeyong Lee</Heading>

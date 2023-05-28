@@ -2,7 +2,7 @@ import { Container, Heading, Text, Image, HStack } from "@chakra-ui/react";
 
 export default function About() {
     return (
-        <Container bg="blue.700" maxWidth="65vw" centerContent>
+        <Container maxWidth="65vw" centerContent>
             <Heading>About Me</Heading>
 
             <HStack spacing={10} pt="15px">
