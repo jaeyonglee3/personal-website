@@ -1,5 +1,12 @@
-import { Box, Flex, Heading, Button, Spacer, HStack } from "@chakra-ui/react";
+import { Box, Flex, Heading, Button, Spacer, HStack, Text } from "@chakra-ui/react";
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
+import { Link as ScrollLink, animateScroll as scroll} from 'react-scroll';
+
+const menuItems = ['About Me', 'Skills', 'Projects', 'Contact', 'Resume']; 
+
+const MenuButton = () => (
+    <Text>Button</Text>
+)
 
 export default function navbar() {
     const buttonStyles = {
@@ -12,25 +19,30 @@ export default function navbar() {
     }
 
     return (
+        <Box width="100vw" position="fixed" bg="gray.900">
+            <Flex as="nav" p="10px" alignItems="center">
 
-    // TODO: Fix the position of the navbar to the top of the screen
-    <Box width="100vw" position="fixed" bg="gray.900">
-        <Flex as="nav" p="10px" alignItems="center">
+                <Button sx={buttonStyles} size="md" pl="15px" onClick={() => scroll.scrollToTop({ duration: 500 })}>
+                    Jaeyong Lee
+                </Button>
+                
+                <Spacer />
+                
+                <HStack spacing="20px">
 
-            <Heading size="md" pl="15px">Jaeyong Lee</Heading>
-            <Spacer />
-            
-            <HStack spacing="20px">
-                <Button sx={buttonStyles}>About Me</Button>
-                <Button sx={buttonStyles}>Skills</Button>
-                <Button sx={buttonStyles}>Projects</Button>
-                <Button sx={buttonStyles}>Contact</Button>
-                <Button sx={buttonStyles} bg="blue.100">Resume</Button>
-                {/* TODO: Change the colour of the resume button to make it stand out */}
-                <ColorModeSwitcher />
-            </HStack>
+                    {menuItems.map(item => (
+                        <ScrollLink to={item} smooth={true} duration={500} offset={-80}>
+                            <Button sx={buttonStyles}>
+                                {item}
+                            </Button>
+                        </ScrollLink>
+                    ))}
 
-        </Flex>
-    </Box>
+                    {/* TODO: Change the colour of the resume button to make it stand out */}
+                    <ColorModeSwitcher />
+                </HStack>
+
+            </Flex>
+        </Box>
     )
 }

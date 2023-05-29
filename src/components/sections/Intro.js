@@ -2,9 +2,13 @@ import {
     Box,
     Container,
     Heading,
+    Spacer,
     Text,
     VStack
   } from '@chakra-ui/react';
+
+import { ArrowDownIcon } from '@chakra-ui/icons';
+
 
 export default function Landing(props) {
 
@@ -15,6 +19,9 @@ export default function Landing(props) {
                 <Heading size="4xl">Jaeyong Lee</Heading>
                 <Text>🇨🇦 🇰🇷</Text>
                 <Text>Computer Science @ University of Toronto</Text>
+
+                {/* TODO: Animate the arrow down icon to bounce up and down and maybe push it down some more */}
+                <ArrowDownIcon w={8} h={8} boxSize={6} />
             </VStack>
         </Container>       
     )

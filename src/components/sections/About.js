@@ -2,28 +2,23 @@ import { Container, Heading, Text, Image, HStack } from "@chakra-ui/react";
 
 export default function About() {
     return (
-        <Container maxWidth="65vw" centerContent>
-            <Heading>About Me</Heading>
+            <Container maxWidth="65vw" name="About Me" centerContent>
+                <Heading>About Me</Heading>
 
-            <HStack spacing={10} pt="15px">
-                <Image 
-                    src="/headshot.jpg"
-                    boxSize='135px'
-                    borderRadius='full'
-                    border={'3px solid #1E2428'}
-                />
+                <HStack spacing={10} pt="15px">
+                    <Image 
+                        src="/headshot.jpg"
+                        boxSize='135px'
+                        borderRadius='full'
+                        border={'3px solid #1E2428'}
+                    />
 
-                <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    Integer nec elit id tortor ultrices euismod. Nulla facilisi. 
-                    Aliquam erat volutpat. Mauris elementum eros ac efficitur posuere. 
-                    Suspendisse pulvinar velit vitae ex ultrices, in consequat justo consectetur. 
-                    Nunc id lectus sed libero viverra dapibus. Ut non tempor velit. Suspendisse eleifend posuere arcu, 
-                    nec malesuada ex eleifend nec. Nulla malesuada augue auctor, tempus lacus eget, rutrum purus. 
-                    Cras consectetur sem quis ipsum cursus, sit amet tincidunt metus auctor. 
-                    Quisque facilisis velit a ullamcorper vulputate. Duis feugiat commodo diam et.
-                </Text>
-            </HStack>
-        </Container>
+                    <Text>
+                        Hi! My name is Jaeyong and I'm a Computer Science student at the University of Toronto. I have experience 
+                        working on both front-end and back-end development through my roles working at the Intelligent Adaptive
+                        Interventions Lab and Serv2U. In my free time, I enjoy playing the guitar and exploring nature. 
+                    </Text>
+                </HStack>
+            </Container>
     )
 }
