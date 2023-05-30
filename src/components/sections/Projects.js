@@ -35,7 +35,7 @@ export default function Projects() {
 
         {Array(numCards).fill().map((_, index) => (
           <ProjectCard key={index} />
-        ))};
+        ))}
 
       </SimpleGrid>
     </Container>

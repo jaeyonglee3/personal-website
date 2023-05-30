@@ -24,7 +24,6 @@ function App() {
       <About />
       <Projects />
       <Footer />
-      {/* <ParticlesBg type="cobweb" num={250} color="#5E81AC" bg={true} />  */}
       <ParticlesBg type="cobweb" num={150} color="#BEBEBE" bg={true} /> 
 
     </ChakraProvider>

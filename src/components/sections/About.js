@@ -5,7 +5,7 @@ export default function About() {
             <Container maxWidth="65vw" name="About Me" centerContent>
                 <Heading>About Me</Heading>
 
-                <HStack spacing={10} pt="15px">
+                <HStack spacing={10} pt="15px" pb="20px">
                     <Image 
                         src="/headshot.jpg"
                         boxSize='135px'
