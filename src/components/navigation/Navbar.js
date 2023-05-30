@@ -1,26 +1,9 @@
-import { Box, Flex, Divider, Link, Button, Spacer, HStack } from "@chakra-ui/react";
+import { Box, Flex, Divider, Button, Spacer, HStack } from "@chakra-ui/react";
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
 import { Link as ScrollLink, animateScroll as scroll} from 'react-scroll';
-import { AiFillLinkedin, AiFillGithub, AiOutlineMail } from 'react-icons/ai';
+import SocialMedia from "../global/SocialMedia";
 
-const menuItems = ['About Me', 'Skills', 'Projects', 'Contact', 'Resume']; 
-const socialMedia = [
-    {
-        aria: 'Linkedin',
-        icon: <AiFillLinkedin />,
-        href: "https://www.linkedin.com/in/jaeyong-lee/"
-    },
-    {
-        aria: 'GitHub',
-        icon: <AiFillGithub />,
-        href: "https://github.com/jaeyonglee3"
-    },
-    {
-        aria: 'Email',
-        icon: <AiOutlineMail />,
-        href: 'mailto:jaeyong.lee@mail.utoronto.ca'
-    }
-]
+const menuItems = ['About Me', 'Skills', 'Projects']; 
 
 
 export default function navbar() {
@@ -33,31 +16,23 @@ export default function navbar() {
         }
     }
 
+    const openResume = () => {
+        window.open("/Jaeyong-Resume.pdf", "_blank")
+    }
+
     return (
         <Box width="100vw" position="fixed" bg="gray.900">
 
             {/* Social Media Icons above menu */}
             <Flex width="100vw" p="8px" alignItems="center" justify="flex-end">
                 <Divider />
-                    <HStack spacing="20px" pr="13px">
-                        {socialMedia.map((social, i) => (
-                            <Link
-                                key={i}
-                                aria-label={social.aria}
-                                href={social.href}
-                                fontSize="20px"
-                                isExternal
-                            >
-                                {social.icon}
-                            </Link>
-                        ))}
-                    </HStack>
+                <SocialMedia fontSize="20px"/>
             </Flex>
 
             {/* <Divider /> */}
 
             {/* Start menu here */}
-            <Flex as="nav" pl="10px" pr="10px" pb="10px" alignItems="center">
+            <Flex as="nav" pl="10px" pr="10px" pb="5px" alignItems="center">
 
                 <Button sx={buttonStyles} size="md" pl="15px" onClick={() => scroll.scrollToTop({ duration: 500 })}>
                     Jaeyong Lee
@@ -74,6 +49,8 @@ export default function navbar() {
                             </Button>
                         </ScrollLink>
                     ))}
+
+                    <Button sx={buttonStyles} onClick={openResume}>Resume</Button>
 
                     {/* TODO: Change the colour of the resume button to make it stand out */}
                     <ColorModeSwitcher />
