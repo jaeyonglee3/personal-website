@@ -1,5 +1,5 @@
 import { Box, Flex, Divider, Button, Spacer, HStack } from "@chakra-ui/react";
-import { ColorModeSwitcher } from "../../ColorModeSwitcher";
+import { ColorModeSwitcher } from "../global/ColorModeSwitcher";
 import { Link as ScrollLink, animateScroll as scroll} from 'react-scroll';
 import SocialMedia from "../global/SocialMedia";
 
@@ -28,8 +28,6 @@ export default function navbar() {
                 <Divider />
                 <SocialMedia fontSize="20px"/>
             </Flex>
-
-            {/* <Divider /> */}
 
             {/* Start menu here */}
             <Flex as="nav" pl="10px" pr="10px" pb="5px" alignItems="center">
