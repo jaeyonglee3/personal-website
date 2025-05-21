@@ -1,22 +1,31 @@
-import { Box, Flex, Spacer, Text, Divider, Button } from "@chakra-ui/react";
-import { Link as ScrollLink, animateScroll as scroll} from 'react-scroll';
-import SocialMedia from "../global/SocialMedia";
-import { FiArrowUpCircle } from "react-icons/fi";
-
+import { Box, Flex, Spacer, Text, Button, useColorMode } from '@chakra-ui/react';
+import { animateScroll as scroll } from 'react-scroll';
+import { FiArrowUpCircle } from 'react-icons/fi';
 
 export default function Footer() {
-    return (
-        // TODO: Fix the position of the navbar to the top of the screen
-        <Box height="75px" width="100vw" bg={"gray.900"} p="13px">
-            <Flex as="nav" p="10px" alignItems="center">
-                <Text fontSize="md">&copy; Jaeyong Lee. Built with&nbsp;&hearts; using React.js</Text>
-                <Spacer />
-                <SocialMedia fontSize="25px"/>
+    const { colorMode } = useColorMode();
 
-                <Button variant='ghost' onClick={() => scroll.scrollToTop({ duration: 500 })}>
-                    <FiArrowUpCircle fontSize={30} color="#48BB78"/>
+    return (
+        <Box
+            height="75px"
+            width="100%"
+            overflow-x="hidden"
+            bg={colorMode === 'dark' ? 'gray.800' : 'gray.200'}
+            p="13px"
+        >
+            <Flex as="nav" p="10px" alignItems="center">
+                <Text fontSize="md">Last updated: May 2025</Text>
+                <Spacer />
+
+                <Button
+                    variant="ghost"
+                    onClick={() => scroll.scrollToTop({ duration: 500 })}
+                    rightIcon={<FiArrowUpCircle fontSize={24} />}
+                    fontWeight="normal"
+                >
+                    Back to Top
                 </Button>
             </Flex>
         </Box>
-    )
+    );
 }

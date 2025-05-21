@@ -1,26 +1,38 @@
-import {
-    Box,
-    Container,
-    Heading,
-    Spacer,
-    Text,
-    VStack
-  } from '@chakra-ui/react';
+import { Container, Heading, Image, Text, VStack } from '@chakra-ui/react';
 
 import { ArrowDownIcon } from '@chakra-ui/icons';
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 const BouncingArrow = motion(ArrowDownIcon);
 
-export default function Landing(props) {
+export default function Landing() {
     return (
-        <Container as="section" maxWidth="100vw" h="100vh" pt={['25vh', '35vh']} centerContent>
-            <VStack>
-                <Heading size="4xl">Jaeyong Lee</Heading>
-                <Heading size="md">🇨🇦 🇰🇷</Heading>
-                <Text fontSize="lg">Computer Science @ University of Toronto</Text>
-                <BouncingArrow pt="20px" w={10} h={20} animate={{ y: [-10, 0, -10] }} transition={{ repeat: Infinity, duration: 1 }} />
+        <Container
+            as="section"
+            overflow-x="hidden"
+            maxW="100%"
+            h="100vh"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            centerContent
+        >
+            <VStack spacing={4}>
+                <Image src="/headshot.jpg" boxSize="176px" borderRadius="full" />
+                <Heading size="3xl">hello!</Heading>
+                <Text fontSize="xl">
+                    My name is Jaeyong Lee and I study Computer Science at the University of
+                    Toronto.
+                </Text>
+                <Heading size="lg">🇨🇦 🇰🇷</Heading>
+                <BouncingArrow
+                    pt="20px"
+                    w={10}
+                    h={20}
+                    animate={{ y: [-10, 0, -10] }}
+                    transition={{ repeat: Infinity, duration: 1 }}
+                />
             </VStack>
-        </Container>       
-    )
+        </Container>
+    );
 }

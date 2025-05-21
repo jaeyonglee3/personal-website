@@ -1,16 +1,15 @@
 import { extendTheme } from '@chakra-ui/react';
 
-const config = extendTheme({
-    initialColorMode: 'dark',
-    useSystemColorMode: false,
-});
-
-const customTheme = extendTheme({
+const theme = extendTheme({
+    config: {
+        initialColorMode: 'dark',
+        useSystemColorMode: false,
+    },
     semanticTokens: {
         colors: {
             bg: {
-                default: '#ECEFF4',
-                _dark: '#1E2428',
+                default: '#F7FAFC',
+                _dark: '#171923',
             },
         },
     },
@@ -20,11 +19,12 @@ const customTheme = extendTheme({
                 fontFamily: 'mundial, sans-serif',
                 fontWeight: 300,
                 fontStyle: 'normal',
+                bg: 'bg',
+                margin: 0,
+                padding: 0,
             },
         },
     },
 });
-
-const theme = extendTheme(config, customTheme);
 
 export default theme;
