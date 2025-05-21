@@ -1,60 +1,38 @@
-import { Box, Flex, Divider, Button, Spacer, HStack } from "@chakra-ui/react";
-import { ColorModeSwitcher } from "../global/ColorModeSwitcher";
-import { Link as ScrollLink, animateScroll as scroll} from 'react-scroll';
-import SocialMedia from "../global/SocialMedia";
+import { Box, Flex, HStack, Button, Spacer, useColorMode } from '@chakra-ui/react';
+import { ColorModeSwitcher } from '../global/ColorModeSwitcher';
+import { Link as ScrollLink } from 'react-scroll';
+import SocialMedia from '../global/SocialMedia';
 
-const menuItems = ['About Me', 'Skills', 'Projects']; 
+const menuItems = ['About Me', 'Skills', 'Projects'];
 
-
-export default function navbar() {
-    const buttonStyles = {
-        fontSize: "17px",
-        bg: null,
-        ':hover': {
-            color: 'black'
-            // TODO: add a bouncing animation or something to menu buttons when hovered
-        }
-    }
-
+export default function Navbar() {
+    const { colorMode } = useColorMode();
     const openResume = () => {
-        window.open("/Jaeyong-Resume.pdf", "_blank")
-    }
+        window.open('/Jaeyong-Resume.pdf', '_blank');
+    };
 
     return (
-        <Box width="100vw" position="fixed" bg="gray.900">
-
-            {/* Social Media Icons above menu */}
-            <Flex width="100vw" p="8px" alignItems="center" justify="flex-end">
-                <Divider />
-                <SocialMedia fontSize="20px"/>
-            </Flex>
-
-            {/* Start menu here */}
-            <Flex as="nav" pl="10px" pr="10px" pb="5px" alignItems="center">
-
-                <Button sx={buttonStyles} size="md" pl="15px" onClick={() => scroll.scrollToTop({ duration: 500 })}>
-                    Jaeyong Lee
-                </Button>
-                
-                <Spacer />
-                
-                <HStack spacing="20px">
-
+        <Box
+            width="100vw"
+            position="fixed"
+            bg={colorMode === 'dark' ? 'gray.900' : 'gray.500'}
+            zIndex={2}
+        >
+            <Flex as="nav" px="20px" py="16px" alignItems="center">
+                <HStack spacing={'20px'}>
                     {menuItems.map(item => (
-                        <ScrollLink to={item} smooth={true} duration={500} offset={-80}>
-                            <Button sx={buttonStyles}>
-                                {item}
-                            </Button>
+                        <ScrollLink key={item} to={item} smooth duration={500} offset={-80}>
+                            <Button variant={'ghost'}>{item}</Button>
                         </ScrollLink>
                     ))}
-
-                    <Button sx={buttonStyles} onClick={openResume}>Resume</Button>
-
-                    {/* TODO: Change the colour of the resume button to make it stand out */}
-                    <ColorModeSwitcher />
+                    <Button onClick={openResume} variant={'ghost'}>
+                        Resume
+                    </Button>
                 </HStack>
-
+                <Spacer />
+                <SocialMedia fontSize="20px" />
+                <ColorModeSwitcher />
             </Flex>
         </Box>
-    )
+    );
 }
