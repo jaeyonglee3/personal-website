@@ -1,4 +1,4 @@
-import { Box, Flex, HStack, Button, Spacer, useColorMode } from '@chakra-ui/react';
+import { Box, Flex, Divider, HStack, Button, Spacer, useColorMode } from '@chakra-ui/react';
 import { ColorModeSwitcher } from '../global/ColorModeSwitcher';
 import { Link as ScrollLink } from 'react-scroll';
 import { animateScroll as scroll } from 'react-scroll';
@@ -20,7 +20,7 @@ export default function Navbar() {
             bg={colorMode === 'dark' ? 'gray.800' : 'gray.200'}
             zIndex={2}
         >
-            <Flex as="nav" px="20px" py="16px" alignItems="center">
+            <Flex as="nav" px="20px" py="12px" alignItems="center">
                 <Button
                     fontWeight="normal"
                     variant={'ghost'}
@@ -28,20 +28,26 @@ export default function Navbar() {
                 >
                     Jaeyong Lee
                 </Button>
+
+                <Divider orientation="vertical" height="24px" mx="12px" borderColor="gray.500" />
+
                 <HStack spacing={'12px'}>
                     {menuItems.map(item => (
                         <ScrollLink key={item} to={item} smooth duration={500} offset={-80}>
-                            <Button variant={'ghost'}>{item}</Button>
+                            <Button variant={'ghost'} size={'md'}>
+                                {item}
+                            </Button>
                         </ScrollLink>
                     ))}
                     <Button
                         onClick={openResume}
                         variant={'ghost'}
-                        rightIcon={<FaExternalLinkAlt fontSize={16} />}
+                        rightIcon={<FaExternalLinkAlt fontSize={12} />}
                     >
                         Resume
                     </Button>
                 </HStack>
+
                 <Spacer />
                 <SocialMedia fontSize="20px" />
                 <ColorModeSwitcher />
