@@ -5,7 +5,7 @@ import { animateScroll as scroll } from 'react-scroll';
 import SocialMedia from '../global/SocialMedia';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
-const menuItems = ['About Me', 'Skills', 'Projects & Experience'];
+const menuItems = ['About Me', 'Projects & Experience', 'Skills & Aspirations'];
 
 export default function Navbar() {
     const { colorMode } = useColorMode();

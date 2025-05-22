@@ -4,24 +4,24 @@ import { AiFillLinkedin, AiFillGithub, AiOutlineMail } from 'react-icons/ai';
 const socialMedia = [
     {
         aria: 'Linkedin',
-        icon: <AiFillLinkedin fontSize={'28px'} />,
+        icon: <AiFillLinkedin fontSize={'32px'} />,
         href: 'https://www.linkedin.com/in/jaeyong-lee/',
     },
     {
         aria: 'GitHub',
-        icon: <AiFillGithub fontSize={'28px'} />,
+        icon: <AiFillGithub fontSize={'32'} />,
         href: 'https://github.com/jaeyonglee3',
     },
     {
         aria: 'Email',
-        icon: <AiOutlineMail fontSize={'28px'} />,
+        icon: <AiOutlineMail fontSize={'32px'} />,
         href: 'mailto:jaeyong.lee@mail.utoronto.ca',
     },
 ];
 
 export default function SocialMedia(props) {
     return (
-        <HStack spacing="20px" pr="13px">
+        <HStack spacing="20px" pr="12px">
             {socialMedia.map((social, i) => (
                 <Link
                     key={i}

@@ -16,7 +16,7 @@ export default function About() {
                         shadow="lg"
                     />
                     <Text fontSize="sm" mt="2" color="gray.300">
-                        📍 Georgian Bay — August 2024
+                        📸 A trip to Georgian Bay — 08/2024
                     </Text>
                 </Box>
 
@@ -79,27 +79,24 @@ export default function About() {
                                 ),
                             },
                             {
-                                emoji: '🚀',
+                                emoji: '🌱',
                                 text: (
                                     <>
-                                        Currently diving deeper into{' '}
+                                        In my free time, I enjoy making{' '}
                                         <Text as="span" fontWeight="bold">
-                                            React
-                                        </Text>
-                                        ,{' '}
-                                        <Text as="span" fontWeight="bold">
-                                            TypeScript
-                                        </Text>
-                                        , and backend systems with{' '}
-                                        <Text as="span" fontWeight="bold">
-                                            Node.js
+                                            music
                                         </Text>{' '}
-                                        and{' '}
+                                        — I play guitar and drums, and some of my favourite bands
+                                        are The Beatles, Eagles, and Dire Straits. I also love
+                                        playing{' '}
                                         <Text as="span" fontWeight="bold">
-                                            Python
+                                            basketball
+                                        </Text>{' '}
+                                        and spending time{' '}
+                                        <Text as="span" fontWeight="bold">
+                                            outdoors
                                         </Text>
-                                        . I'm building small projects to sharpen my skills and
-                                        experiment with ideas.
+                                        , especially in seek of amazing views.
                                     </>
                                 ),
                             },
