@@ -8,16 +8,19 @@ const socialMedia = [
         aria: 'Linkedin',
         icon: <AiFillLinkedin fontSize="32px" />,
         href: 'https://www.linkedin.com/in/jaeyong-lee/',
+        tooltip: 'LinkedIn',
     },
     {
         aria: 'GitHub',
         icon: <AiFillGithub fontSize="32px" />,
         href: 'https://github.com/jaeyonglee3',
+        tooltip: 'GitHub',
     },
     {
         aria: 'Email',
         icon: <AiOutlineMail fontSize="32px" />,
-        href: `mailto:${emailAddress}`, // still allows clicking to open mail app
+        href: `mailto:${emailAddress}`,
+        tooltip: 'Click to copy my email address',
         isEmail: true,
     },
 ];
@@ -48,28 +51,27 @@ export default function SocialMedia(props) {
 
     return (
         <HStack spacing="20px" pr="12px">
-            {socialMedia.map((social, i) =>
-                social.isEmail ? (
-                    <Tooltip key={i} label="Copy my email address" hasArrow>
+            {socialMedia.map((social, i) => (
+                <Tooltip key={i} label={social.tooltip} hasArrow>
+                    {social.isEmail ? (
                         <span
                             style={{ cursor: 'pointer', fontSize: props.fontSize }}
                             onClick={handleCopy}
                         >
                             {social.icon}
                         </span>
-                    </Tooltip>
-                ) : (
-                    <Link
-                        key={i}
-                        aria-label={social.aria}
-                        href={social.href}
-                        fontSize={props.fontSize}
-                        isExternal
-                    >
-                        {social.icon}
-                    </Link>
-                )
-            )}
+                    ) : (
+                        <Link
+                            aria-label={social.aria}
+                            href={social.href}
+                            fontSize={props.fontSize}
+                            isExternal
+                        >
+                            {social.icon}
+                        </Link>
+                    )}
+                </Tooltip>
+            ))}
         </HStack>
     );
 }
