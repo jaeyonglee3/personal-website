@@ -6,9 +6,16 @@ import {
     Container,
     Heading,
     Image,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure,
     SimpleGrid,
     Text,
 } from '@chakra-ui/react';
+import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { Button } from '@chakra-ui/react';
@@ -18,18 +25,26 @@ const cardStyle = {
     overflow: 'hidden',
     shadow: 'md',
     bg: 'rgba(45, 55, 72, 0.6)',
-    backdropFilter: 'blur(4px)',
+    backdropFilter: 'blur(1px)',
     color: 'white',
 };
 
-const ProjectCard = ({ title, subtitle, description, image, projectLink }) => (
+const ProjectCard = ({ title, subtitle, description, image, projectLink, onImageClick }) => (
     <Card sx={cardStyle}>
-        <Image src={image} alt={title} objectFit="cover" h="160px" w="100%" />
+        <Image
+            src={image}
+            alt={title}
+            objectFit="cover"
+            h="160px"
+            w="100%"
+            cursor="pointer"
+            onClick={() => onImageClick(image, title)}
+        />
 
         <CardHeader pb="0">
             <Heading size="md">{title}</Heading>
             {subtitle && (
-                <Text fontSize="13px" color="gray.400" mt="1">
+                <Text fontSize="13px" color="gray.200" mt="1">
                     {subtitle}
                 </Text>
             )}
@@ -41,127 +56,148 @@ const ProjectCard = ({ title, subtitle, description, image, projectLink }) => (
 
         <CardFooter pt="10px">
             {
-                // projectLink.startsWith('http') && (
-                //     <Button
-                //         as="a"
-                //         href={projectLink}
-                //         leftIcon={<FaGithub />}
-                //         colorScheme="gray"
-                //         size="sm"
-                //     >
-                //         {'GitHub'}
-                //     </Button>
-                // )
+                projectLink.startsWith('http') && (
+                    <Button
+                        as="a"
+                        href={projectLink}
+                        leftIcon={<FaGithub />}
+                        colorScheme="gray"
+                        size="sm"
+                    >
+                        {'GitHub'}
+                    </Button>
+                )
 
                 // Use below when experience details are ready
-                <Button
-                    as="a"
-                    href={projectLink}
-                    target={projectLink.startsWith('http') ? '_blank' : '_self'}
-                    leftIcon={projectLink.startsWith('http') ? <FaGithub /> : <FaArrowRightLong />}
-                    colorScheme="gray"
-                    size="sm"
-                >
-                    {projectLink.startsWith('http') ? 'GitHub' : 'Read More'}
-                </Button>
+                // <Button
+                //     as="a"
+                //     href={projectLink}
+                //     target={projectLink.startsWith('http') ? '_blank' : '_self'}
+                //     leftIcon={projectLink.startsWith('http') ? <FaGithub /> : <FaArrowRightLong />}
+                //     colorScheme="gray"
+                //     size="sm"
+                // >
+                //     {projectLink.startsWith('http') ? 'GitHub' : 'Read More'}
+                // </Button>
             }
         </CardFooter>
     </Card>
 );
 
 export default function Projects() {
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedTitle, setSelectedTitle] = useState('');
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const handleImageClick = (image, title) => {
+        setSelectedImage(image);
+        setSelectedTitle(title);
+        onOpen();
+    };
+
     const cards = [
         {
             title: 'PointClickCare Internship',
             subtitle: 'Software Engineer ⋅ Jan 2025 - Aug 2025',
-            description: 'A sleek developer productivity dashboard built with React and Chakra UI.',
-            image: '/images/devdash.jpg',
-            githubLink: 'https://github.com/example/devdash',
+            description:
+                'Backend development (Java & Spring Boot) for medication management + patient care coordination.',
+            image: '/images/pcc-logo.jpg',
             projectLink: '/experience/pointclickcare',
         },
         {
             title: 'Geotab Internship',
             subtitle: 'Software Developer ⋅ May 2024 - Aug 2024',
-            description: 'Worked on NLP models for document summarization in Python and PyTorch.',
-            image: '/images/research.jpg',
+            description:
+                'Full-stack development (Go, Node.js, React) for the Intelligent Transportation Analytics product.',
+            image: '/images/geotab-pic.jpg',
             projectLink: '/experience/geotab',
         },
         {
             title: 'U of T Research Lab',
-            subtitle: 'Software Developer (05/2023 - 03/2024)',
-            description: 'A mobile app to track fitness habits and goals using React Native.',
-            image: '/images/fittrack.jpg',
+            subtitle: 'Software Developer ⋅ May 2023 - Mar 2024',
+            description:
+                'Built AI tools for students, deploying and using them to collect data and feedback for research.',
+            image: '/images/iai-logo.jpg',
             githubLink: 'https://github.com/example/fittrack',
             projectLink: '/experience/iai',
         },
         {
             title: 'U of T CS Department',
-            subtitle: 'May 2023 - Aug 2023',
-            description: 'Worked on internal tools for data pipeline monitoring and alerting.',
-            image: '/images/pcc.jpg',
+            subtitle: 'Software Developer ⋅ May 2023 - Aug 2023',
+            description:
+                "Worked on Prof. David Liu's Students Developing Software team on the Courseography project.",
+            image: '/images/sds-logo.jpg',
             projectLink: '/experience/sds',
         },
         {
             title: 'Caspr',
             subtitle: 'Next.js, Firebase, TypeScript, React, Three.js, Vercel',
-            description: 'Collaborated on redesigning client onboarding flows using TypeScript.',
-            image: '/images/clio.jpg',
+            description:
+                'Interactive web app and collaboration platform for exploring and analyzing causal diagrams in 3D.',
+            image: '/images/caspr-ui.jpg',
             projectLink: 'https://github.com/jaeyonglee3/Caspr',
         },
         {
             title: 'EasyChat',
             subtitle: 'MongoDB, Express.js, React, Node.js, Typescript, Socket.IO',
-            description: 'A real-time code collaboration tool with WebSocket support.',
-            image: '/images/codecollab.jpg',
+            description:
+                'A comprehensive instant messaging application featuring a RESTful backend and modern UI.',
+            image: '/images/easychat-ss.jpg',
             projectLink: 'https://github.com/jaeyonglee3/EasyChat',
         },
         {
             title: 'ScanEats',
             subtitle: 'Python, TensorFlow, Flask, React',
-            description: 'A real-time code collaboration tool with WebSocket support.',
-            image: '/images/codecollab.jpg',
+            description:
+                'A full-stack ML app built on a CNN I trained w/ TensorFlow to rate fruit freshness using the webcam.',
+            image: '/images/image-soon.jpg',
             projectLink: 'https://github.com/jaeyonglee3/ScanEats',
         },
         {
             title: 'MelodyMatch',
             subtitle: 'Python, Plotly, Bottle Web Framework, Tkinter',
-            description: 'A real-time code collaboration tool with WebSocket support.',
-            image: '/images/codecollab.jpg',
+            description:
+                'Uses Spotify account data + a decision tree recommendation algorithm to make excellent music recommendations.',
+            image: '/images/melody-logo.jpg',
             projectLink: 'https://github.com/jaeyonglee3/MelodyMatch',
         },
         {
             title: 'JoltEd Chrome Extension',
             subtitle: 'JavaScript, React, Chrome API, OpenAI API',
-            description: 'A real-time code collaboration tool with WebSocket support.',
-            image: '/images/codecollab.jpg',
-            projectLink: 'https://github.com/jaeyonglee3/MelodyMatch',
+            description:
+                'Instant personalized explanation generation + example provisioning of educational content on any webpage.',
+            image: '/images/jolted-ss.jpg',
+            projectLink:
+                'https://github.com/ACCELab-UofT/JoltEd-Chrome-Extension?tab=readme-ov-file',
         },
         {
             title: 'Rotman Commerce HR Association Website',
             subtitle: 'HTML, CSS, JavaScript',
-            description: 'A real-time code collaboration tool with WebSocket support.',
-            image: '/images/codecollab.jpg',
-            projectLink: 'https://github.com/jaeyonglee3/MelodyMatch',
+            description:
+                'A website created for the Rotman Commerce Human Resources student group at the University of Toronto.',
+            image: '/images/rchra-site.jpg',
+            projectLink: 'https://github.com/jaeyonglee3/RCHRA-Website',
         },
         {
             title: 'Habitual (iOS App)',
             subtitle: 'Swift',
-            description: 'A real-time code collaboration tool with WebSocket support.',
-            image: '/images/codecollab.jpg',
-            projectLink: 'https://github.com/jaeyonglee3/MelodyMatch',
+            description:
+                'Helps users create and track daily habits, set repetition goals, and monitor weekly progress.',
+            image: '/images/habitual.jpg',
+            projectLink: 'https://github.com/jaeyonglee3/habitual-app',
         },
         {
             title: 'Coming Soon!',
             subtitle: 'As of May 2025',
             description:
                 "I'm working on a new full-stack project that implements RAG techniques for personalized learning experiences.",
-            image: '/images/codecollab.jpg',
-            projectLink: 'https://github.com/jaeyonglee3/MelodyMatch',
+            image: '/images/coming-soon.jpg',
+            projectLink: '',
         },
     ];
 
     return (
-        <Container name="Projects & Experience" centerContent py="60px" maxWidth="85vw">
+        <Container name="Projects & Experience" centerContent py="60px" maxWidth="90vw">
             <Heading mb="2">Projects & Experience</Heading>
             <Text mb="6" fontSize="lg" textAlign="center">
                 Here, I've selected a few of my projects and experiences that I'm most proud of.
@@ -169,9 +205,26 @@ export default function Projects() {
 
             <SimpleGrid spacing="20px" minChildWidth="300px" maxW="90vw">
                 {cards.map((card, index) => (
-                    <ProjectCard key={index} {...card} />
+                    <ProjectCard key={index} {...card} onImageClick={handleImageClick} />
                 ))}
             </SimpleGrid>
+
+            <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl">
+                <ModalOverlay bg="blackAlpha.800" backdropFilter="blur(3px)" />
+                <ModalContent bg="gray.200">
+                    <ModalCloseButton color="white" />
+                    <ModalBody p="0">
+                        <Image
+                            src={selectedImage}
+                            alt={selectedTitle}
+                            w="100%"
+                            h="auto"
+                            objectFit="contain"
+                            borderRadius="md"
+                        />
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
         </Container>
     );
 }

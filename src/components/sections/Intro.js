@@ -22,7 +22,7 @@ export default function Landing() {
                 <Image src="/headshot.jpg" boxSize="180px" borderRadius="full" />
                 <Heading size="3xl">Hello!</Heading>
                 <Text fontSize="xl">
-                    I'm Jaeyong, a Software Developer currently studying Computer Science at the
+                    I'm Jaeyong, a Software Engineer currently studying Computer Science at the
                     University of Toronto.
                 </Text>
                 <Heading size="lg">🇨🇦 🇰🇷</Heading>

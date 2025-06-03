@@ -39,9 +39,20 @@ const cardStyle = {
     overflow: 'hidden',
     shadow: 'md',
     bg: 'rgba(45, 55, 72, 0.6)',
-    backdropFilter: 'blur(4px)',
+    backdropFilter: 'blur(1px)',
     color: 'white',
     p: 6,
+};
+
+const cardStyle2 = {
+    borderRadius: 'xl',
+    height: '400px',
+    overflow: 'hidden',
+    shadow: 'md',
+    bg: 'rgba(45, 55, 72, 0.6)',
+    backdropFilter: 'blur(1px)',
+    color: 'white',
+    p: 4,
 };
 
 const skills = [
@@ -160,18 +171,27 @@ export default function Skills() {
                     </CardBody>
                 </Card>
 
-                <Card {...cardStyle} width="100%" maxW="800px">
-                    <CardBody>
-                        <Heading size="md" mb="4">
-                            Aspirations
-                        </Heading>
-                        <Text fontSize="lg">
-                            I'm passionate about building software that's thoughtful, well-designed,
-                            and useful — from developer tools to user-focused products. I aspire to
-                            work on engineering teams where I can help design scalable systems,
-                            write clean code, and solve meaningful problems through tech.
+                <Card {...cardStyle2} width="100%" maxW="800px" justifyContent="center">
+                    <VStack
+                        as="ul"
+                        spacing={4}
+                        pl="1em"
+                        style={{ listStyleType: 'disc' }}
+                        align="start"
+                    >
+                        <Text as="li" fontSize="lg">
+                            To the left, I've listed the skills I have experience with in no
+                            particular order.
                         </Text>
-                    </CardBody>
+                        <Text as="li" fontSize="lg">
+                            I'm always eager to learn and have regularly picked up new skills in
+                            previous roles.
+                        </Text>
+                        <Text as="li" fontSize="lg">
+                            I really enjoy aspects of both backend and frontend, and I appreciate
+                            the challenges that each comes with.
+                        </Text>
+                    </VStack>
                 </Card>
             </HStack>
         </Container>
