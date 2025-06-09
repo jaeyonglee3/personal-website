@@ -18,8 +18,8 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
-import { FaArrowRightLong } from 'react-icons/fa6';
 import { Button } from '@chakra-ui/react';
+import { FaArrowRightLong } from 'react-icons/fa6';
 
 const ProjectCard = ({ title, subtitle, description, image, projectLink, onImageClick }) => {
     const { colorMode } = useColorMode();
