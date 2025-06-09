@@ -15,7 +15,7 @@ export default function Footer() {
     const { colorMode } = useColorMode();
 
     return (
-        <Box w="100%" bg={colorMode === 'dark' ? 'gray.800' : 'gray.200'} py={4} px={6} mt="auto">
+        <Box w="100%" bg={colorMode === 'dark' ? '#0a0b0f' : 'F7FAFC'} py={4} px={6} mt="auto">
             <Flex
                 direction={{ base: 'column', md: 'row' }}
                 align="center"
@@ -23,7 +23,7 @@ export default function Footer() {
                 gap={2}
             >
                 <VStack spacing={1} align="start">
-                    <Text fontSize="sm">Site last updated: May 2025</Text>
+                    <Text fontSize="sm">Site last updated: June 2025</Text>
                     <Link
                         href="https://github.com/jaeyonglee3/personal-website"
                         isExternal

@@ -10,6 +10,7 @@ import {
     VStack,
     Wrap,
     WrapItem,
+    useColorMode,
 } from '@chakra-ui/react';
 import {
     SiPython,
@@ -20,6 +21,7 @@ import {
     SiReact,
     SiPostgresql,
     SiMongodb,
+    SiJenkins,
     SiHtml5,
     SiCss3,
     SiTailwindcss,
@@ -29,150 +31,148 @@ import {
     SiPostman,
     SiRedux,
     SiGit,
+    SiNextdotjs,
+    SiDocker,
+    SiFigma,
 } from 'react-icons/si';
 import { FaNode, FaDatabase, FaJava } from 'react-icons/fa';
 import { SiExpress } from 'react-icons/si';
 
-const cardStyle = {
-    borderRadius: 'xl',
-    height: '400px',
-    overflow: 'hidden',
-    shadow: 'md',
-    bg: 'rgba(45, 55, 72, 0.6)',
-    backdropFilter: 'blur(1px)',
-    color: 'white',
-    p: 6,
-};
+const categories1 = [
+    {
+        title: 'Languages',
+        skills: [
+            { label: 'Java', icon: FaJava },
+            { label: 'Python', icon: SiPython },
+            { label: 'Go', icon: SiGo },
+            { label: 'C', icon: SiC },
+            { label: 'JavaScript', icon: SiJavascript },
+            { label: 'TypeScript', icon: SiTypescript },
+            { label: 'HTML', icon: SiHtml5 },
+            { label: 'CSS', icon: SiCss3 },
+        ],
+    },
+    {
+        title: 'Databases & Data Technologies',
+        skills: [
+            { label: 'PostgreSQL', icon: SiPostgresql },
+            { label: 'MongoDB', icon: SiMongodb },
+            { label: 'SQL / NoSQL', icon: FaDatabase },
+            { label: 'Node.js', icon: FaNode },
+        ],
+    },
+];
 
-const cardStyle2 = {
-    borderRadius: 'xl',
-    height: '400px',
-    overflow: 'hidden',
-    shadow: 'md',
-    bg: 'rgba(45, 55, 72, 0.6)',
-    backdropFilter: 'blur(1px)',
-    color: 'white',
-    p: 4,
-};
-
-const skills = [
+const categories2 = [
     {
-        label: 'Java',
-        icon: FaJava,
-    },
-    {
-        label: 'Python',
-        icon: SiPython,
-    },
-    {
-        label: 'Go',
-        icon: SiGo,
-    },
-    {
-        label: 'C',
-        icon: SiC,
-    },
-    {
-        label: 'JavaScript',
-        icon: SiJavascript,
-    },
-    {
-        label: 'TypeScript',
-        icon: SiTypescript,
-    },
-    {
-        label: 'React',
-        icon: SiReact,
-    },
-    {
-        label: 'HTML',
-        icon: SiHtml5,
-    },
-    {
-        label: 'CSS',
-        icon: SiCss3,
-    },
-    {
-        label: 'Tailwind CSS',
-        icon: SiTailwindcss,
-    },
-    {
-        label: 'Flask',
-        icon: SiFlask,
-    },
-    {
-        label: 'Express.js',
-        icon: SiExpress,
-    },
-    {
-        label: 'Spring Boot',
-        icon: SiSpring,
-    },
-    {
-        label: 'Jest',
-        icon: SiJest,
-    },
-    {
-        label: 'PostgreSQL',
-        icon: SiPostgresql,
-    },
-    {
-        label: 'MongoDB',
-        icon: SiMongodb,
-    },
-    {
-        label: 'SQL / NoSQL',
-        icon: FaDatabase,
-    },
-    {
-        label: 'Node.js',
-        icon: FaNode,
-    },
-    {
-        label: 'Postman',
-        icon: SiPostman,
-    },
-    {
-        label: 'Redux',
-        icon: SiRedux,
-    },
-    {
-        label: 'Git',
-        icon: SiGit,
+        title: 'Frameworks / Libraries / Tools',
+        skills: [
+            { label: 'React', icon: SiReact },
+            { label: 'Tailwind CSS', icon: SiTailwindcss },
+            { label: 'Flask', icon: SiFlask },
+            { label: 'Express.js', icon: SiExpress },
+            { label: 'Spring Boot', icon: SiSpring },
+            { label: 'Jest', icon: SiJest },
+            { label: 'Postman', icon: SiPostman },
+            { label: 'Redux', icon: SiRedux },
+            { label: 'Git', icon: SiGit },
+            { label: 'Jenkins', icon: SiJenkins },
+            { label: 'Next.js', icon: SiNextdotjs },
+            { label: 'Docker', icon: SiDocker },
+            { label: 'Figma', icon: SiFigma },
+        ],
     },
 ];
 
 export default function Skills() {
+    const { colorMode } = useColorMode();
+
+    const cardStyle = {
+        borderRadius: 'xl',
+        height: '300px',
+        overflow: 'hidden',
+        shadow: 'md',
+        bg: colorMode === 'dark' ? '#1f222e' : '#c8dcea',
+        backdropFilter: 'blur(1px)',
+        p: 6,
+        width: '100%',
+    };
+
+    // const cardStyle2 = {
+    //     borderRadius: 'xl',
+    //     height: '375px',
+    //     overflow: 'hidden',
+    //     shadow: 'md',
+    //     bg: colorMode === 'dark' ? '#1f222e' : '#c8dcea',
+    //     backdropFilter: 'blur(1px)',
+    //     p: 6,
+    //     justifyContent: "center"
+    // };
+
     return (
         <Container maxWidth="85vw" name="Skills" centerContent py="60px">
             <Heading mb="6">Skills</Heading>
-            <HStack spacing="40px" align="center">
-                <Card {...cardStyle} width="100%" maxW="1000px">
+            <HStack align="center">
+                <Card {...cardStyle}>
                     <CardBody>
-                        <Heading size="md" mb="4">
-                            Tech Stack
-                        </Heading>
-                        <Wrap spacing="20px">
-                            {skills.map(({ label, icon: IconComponent }) => (
-                                <WrapItem key={label}>
-                                    <VStack spacing={1}>
-                                        {IconComponent ? (
-                                            <Icon as={IconComponent} fontSize="28px" />
-                                        ) : (
-                                            <Box h="28px" />
-                                        )}
-                                        <Text fontSize="sm" textAlign="center">
-                                            {label}
-                                        </Text>
-                                    </VStack>
-                                </WrapItem>
+                        <VStack spacing="6" align="start">
+                            {categories1.map(category => (
+                                <Box key={category.title} width="100%">
+                                    <Heading size="md" mb="5">
+                                        {category.title}
+                                    </Heading>
+                                    <Wrap spacing="20px">
+                                        {category.skills.map(({ label, icon: IconComponent }) => (
+                                            <WrapItem key={label}>
+                                                <VStack spacing={1}>
+                                                    {IconComponent ? (
+                                                        <Icon as={IconComponent} fontSize="20px" />
+                                                    ) : (
+                                                        <Box h="28px" />
+                                                    )}
+                                                    <Text fontSize="sm" textAlign="center">
+                                                        {label}
+                                                    </Text>
+                                                </VStack>
+                                            </WrapItem>
+                                        ))}
+                                    </Wrap>
+                                </Box>
                             ))}
-                        </Wrap>
+                        </VStack>
                     </CardBody>
                 </Card>
 
-                <Card {...cardStyle2} width="100%" maxW="800px" justifyContent="center">
-                    <VStack
+                <Card {...cardStyle}>
+                    <CardBody>
+                        <VStack spacing="6" align="start">
+                            {categories2.map(category => (
+                                <Box key={category.title} width="100%">
+                                    <Heading size="md" mb="5">
+                                        {category.title}
+                                    </Heading>
+                                    <Wrap spacing="20px">
+                                        {category.skills.map(({ label, icon: IconComponent }) => (
+                                            <WrapItem key={label}>
+                                                <VStack spacing={1}>
+                                                    {IconComponent ? (
+                                                        <Icon as={IconComponent} fontSize="20px" />
+                                                    ) : (
+                                                        <Box h="28px" />
+                                                    )}
+                                                    <Text fontSize="sm" textAlign="center">
+                                                        {label}
+                                                    </Text>
+                                                </VStack>
+                                            </WrapItem>
+                                        ))}
+                                    </Wrap>
+                                </Box>
+                            ))}
+                        </VStack>
+                    </CardBody>
+
+                    {/* <VStack
                         as="ul"
                         spacing={4}
                         pl="1em"
@@ -191,7 +191,7 @@ export default function Skills() {
                             I really enjoy aspects of both backend and frontend, and I appreciate
                             the challenges that each comes with.
                         </Text>
-                    </VStack>
+                    </VStack> */}
                 </Card>
             </HStack>
         </Container>

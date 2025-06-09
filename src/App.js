@@ -1,4 +1,4 @@
-import { ChakraProvider, Box } from '@chakra-ui/react';
+import { ChakraProvider, Box, useColorMode } from '@chakra-ui/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/navigation/Navbar';
 import Intro from './components/sections/Intro';
@@ -24,11 +24,18 @@ function Home() {
 }
 
 function App() {
+    const { colorMode } = useColorMode();
+
     return (
         <Box position="relative" minH="100vh" overflow="hidden">
             {/* Background particles */}
             <Box position="absolute" top={0} left={0} w="100%" h="100%" zIndex={0}>
-                <ParticlesBg type="cobweb" num={160} color="#BEBEBE" />
+                <ParticlesBg
+                    type="cobweb"
+                    num={160}
+                    color={'#BEBEBE'}
+                    // color={colorMode === 'dark' ? '#BEBEBE' : '#0d0d0d'}
+                />
             </Box>
 
             {/* Foreground content */}

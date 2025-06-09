@@ -10,14 +10,14 @@ const menuItems = ['About Me', 'Projects & Experience', 'Skills'];
 export default function Navbar() {
     const { colorMode } = useColorMode();
     const openResume = () => {
-        window.open('/Jaeyong-Resume.pdf', '_blank');
+        window.open('/Resume - Jaeyong Lee.pdf', '_blank');
     };
 
     return (
         <Box
             width="100vw"
             position="fixed"
-            bg={colorMode === 'dark' ? 'gray.800' : 'gray.200'}
+            bg={colorMode === 'dark' ? '#0a0b0f' : '#F7FAFC'}
             zIndex={2}
         >
             <Flex as="nav" px="20px" py="12px" alignItems="center">
@@ -44,7 +44,7 @@ export default function Navbar() {
                         variant={'ghost'}
                         rightIcon={<FaExternalLinkAlt fontSize={12} />}
                     >
-                        Resume
+                        My Resume
                     </Button>
                 </HStack>
 

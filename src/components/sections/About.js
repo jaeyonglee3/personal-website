@@ -1,30 +1,37 @@
-import { Container, Heading, Text, VStack, Box, HStack, Image, Flex } from '@chakra-ui/react';
-
+import {
+    Container,
+    Heading,
+    Text,
+    VStack,
+    Box,
+    HStack,
+    Image,
+    Flex,
+    useColorMode,
+} from '@chakra-ui/react';
 export default function About() {
+    const { colorMode } = useColorMode();
+
     return (
-        <Container maxWidth="90vw" name="About Me" centerContent py="60px">
+        <Container maxWidth="85vw" name="About Me" centerContent py="60px">
             <Heading mb="6">About Me</Heading>
 
             <HStack spacing="40px" align="center" flexWrap="wrap" justify="center">
                 <Box textAlign="center">
                     <Image
-                        src="/images/sunset.jpg"
+                        src="/headshot.jpg"
                         alt="dang the image won't load :( Imagine a beautiful sunset!"
                         borderRadius="xl"
-                        boxSize={['275px', '325px']}
+                        boxSize={['225px', '300px']}
                         objectFit="cover"
                         shadow="lg"
                     />
-                    <Text fontSize="sm" mt="2" color="gray.300">
-                        📸 A trip to Georgian Bay — 08/2024
-                    </Text>
                 </Box>
 
                 <Box
                     borderRadius="2xl"
-                    bg="rgba(45, 55, 72, 0.6)"
+                    bg={colorMode === 'dark' ? '#1f222e' : '#c8dcea'}
                     p="30px"
-                    color="white"
                     shadow="md"
                     backdropFilter="blur(1px)"
                     flex="1"
@@ -39,10 +46,22 @@ export default function About() {
                                         have a passion for{' '}
                                         <Text as="span" fontWeight="bold">
                                             software development
-                                        </Text>{' '}
-                                        - especially when it comes to building meaningful products
-                                        that make life a little easier. I was born in South Korea,
-                                        grew up in Richmond Hill, and now live in Toronto :)
+                                        </Text>
+                                        , especially when it comes to building meaningful products
+                                        that make life a little easier.
+                                    </>
+                                ),
+                            },
+                            {
+                                emoji: '📍',
+                                text: (
+                                    <>
+                                        I was born in{' '}
+                                        <Text as="span" fontWeight="bold">
+                                            South Korea
+                                        </Text>
+                                        , grew up in Richmond Hill, Ontario, and now live in
+                                        Toronto.
                                     </>
                                 ),
                             },
@@ -68,39 +87,35 @@ export default function About() {
                                 ),
                             },
                             {
-                                emoji: '🌱',
+                                emoji: '💡',
                                 text: (
                                     <>
-                                        In my free time, I enjoy making{' '}
-                                        <Text as="span" fontWeight="bold">
-                                            music
-                                        </Text>{' '}
-                                        — I play guitar and drums, and some of my favourite
-                                        artists/bands include The Beatles, wave to earth, Keshi, and
-                                        Eagles. I also love playing{' '}
-                                        <Text as="span" fontWeight="bold">
-                                            basketball
-                                        </Text>
-                                        ,{' '}
-                                        <Text as="span" fontWeight="bold">
-                                            running
-                                        </Text>
-                                        , and spending time{' '}
-                                        <Text as="span" fontWeight="bold">
-                                            outdoors
-                                        </Text>
-                                        , especially in seek of great views.
+                                        Lately I’ve been finding it fun to try out new AI tools and
+                                        explore how they're changing the way we build. From rapid
+                                        prototyping to smarter debugging, there's never been a
+                                        better time to be a developer.
                                     </>
                                 ),
                             },
                             {
-                                emoji: '💡',
+                                emoji: '🌱',
                                 text: (
                                     <>
-                                        As of late, I’ve been keeping up with all the new AI tools
-                                        and exploring how they're changing the way we build — from
-                                        rapid prototyping to smarter debugging, I'd argue there's
-                                        never been a more exciting time to be a developer!
+                                        In my free time,{' '}
+                                        <Text as="span" fontWeight="bold">
+                                            music
+                                        </Text>{' '}
+                                        is a main hobby of mine. I play guitar and drums, and some
+                                        of my favourite artists include The Beatles, wave to earth,
+                                        and John Mayer. I also enjoy{' '}
+                                        <Text as="span" fontWeight="bold">
+                                            basketball
+                                        </Text>{' '}
+                                        and{' '}
+                                        <Text as="span" fontWeight="bold">
+                                            running
+                                        </Text>
+                                        .
                                     </>
                                 ),
                             },

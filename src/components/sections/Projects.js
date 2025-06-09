@@ -14,75 +14,79 @@ import {
     useDisclosure,
     SimpleGrid,
     Text,
+    useColorMode,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { Button } from '@chakra-ui/react';
 
-const cardStyle = {
-    borderRadius: 'xl',
-    overflow: 'hidden',
-    shadow: 'md',
-    bg: 'rgba(45, 55, 72, 0.6)',
-    backdropFilter: 'blur(1px)',
-    color: 'white',
+const ProjectCard = ({ title, subtitle, description, image, projectLink, onImageClick }) => {
+    const { colorMode } = useColorMode();
+
+    const cardStyle = {
+        borderRadius: 'xl',
+        overflow: 'hidden',
+        shadow: 'md',
+        bg: colorMode === 'dark' ? '#1f222e' : '#c8dcea',
+        backdropFilter: 'blur(1px)',
+    };
+
+    return (
+        <Card sx={cardStyle}>
+            <Image
+                src={image}
+                alt={title}
+                objectFit="cover"
+                h="160px"
+                w="100%"
+                cursor="pointer"
+                onClick={() => onImageClick(image, title)}
+            />
+
+            <CardHeader pb="0">
+                <Heading size="md">{title}</Heading>
+                {subtitle && (
+                    <Text fontSize="13px" mt="1">
+                        {subtitle}
+                    </Text>
+                )}
+            </CardHeader>
+
+            <CardBody pt="10px" fontSize="sm">
+                <Text>{description}</Text>
+            </CardBody>
+
+            <CardFooter pt="10px">
+                {
+                    projectLink.startsWith('http') && (
+                        <Button
+                            as="a"
+                            href={projectLink}
+                            leftIcon={<FaGithub />}
+                            colorScheme="gray"
+                            size="sm"
+                        >
+                            {'GitHub'}
+                        </Button>
+                    )
+
+                    // Use below when experience details are ready
+                    // <Button
+                    //     as="a"
+                    //     href={projectLink}
+                    //     target={projectLink.startsWith('http') ? '_blank' : '_self'}
+                    //     leftIcon={projectLink.startsWith('http') ? <FaGithub /> : <FaArrowRightLong />}
+                    //     colorScheme="gray"
+                    //     size="sm"
+                    // >
+                    //     {projectLink.startsWith('http') ? 'GitHub' : 'Read More'}
+                    // </Button>
+                }
+            </CardFooter>
+        </Card>
+    );
 };
-
-const ProjectCard = ({ title, subtitle, description, image, projectLink, onImageClick }) => (
-    <Card sx={cardStyle}>
-        <Image
-            src={image}
-            alt={title}
-            objectFit="cover"
-            h="160px"
-            w="100%"
-            cursor="pointer"
-            onClick={() => onImageClick(image, title)}
-        />
-
-        <CardHeader pb="0">
-            <Heading size="md">{title}</Heading>
-            {subtitle && (
-                <Text fontSize="13px" color="gray.200" mt="1">
-                    {subtitle}
-                </Text>
-            )}
-        </CardHeader>
-
-        <CardBody pt="10px" fontSize="sm">
-            <Text>{description}</Text>
-        </CardBody>
-
-        <CardFooter pt="10px">
-            {
-                projectLink.startsWith('http') && (
-                    <Button
-                        as="a"
-                        href={projectLink}
-                        leftIcon={<FaGithub />}
-                        colorScheme="gray"
-                        size="sm"
-                    >
-                        {'GitHub'}
-                    </Button>
-                )
-
-                // Use below when experience details are ready
-                // <Button
-                //     as="a"
-                //     href={projectLink}
-                //     target={projectLink.startsWith('http') ? '_blank' : '_self'}
-                //     leftIcon={projectLink.startsWith('http') ? <FaGithub /> : <FaArrowRightLong />}
-                //     colorScheme="gray"
-                //     size="sm"
-                // >
-                //     {projectLink.startsWith('http') ? 'GitHub' : 'Read More'}
-                // </Button>
-            }
-        </CardFooter>
-    </Card>
-);
 
 export default function Projects() {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -97,7 +101,7 @@ export default function Projects() {
 
     const cards = [
         {
-            title: 'PointClickCare Internship',
+            title: 'PointClickCare (Internship)',
             subtitle: 'Software Engineer ⋅ Jan 2025 - Aug 2025',
             description:
                 'Backend development (Java & Spring Boot) for medication management + patient care coordination.',
@@ -105,7 +109,7 @@ export default function Projects() {
             projectLink: '/experience/pointclickcare',
         },
         {
-            title: 'Geotab Internship',
+            title: 'Geotab (Internship)',
             subtitle: 'Software Developer ⋅ May 2024 - Aug 2024',
             description:
                 'Full-stack development (Go, Node.js, React) for the Intelligent Transportation Analytics product.',
@@ -125,9 +129,17 @@ export default function Projects() {
             title: 'U of T CS Department',
             subtitle: 'Software Developer ⋅ May 2023 - Aug 2023',
             description:
-                "Worked on Prof. David Liu's Students Developing Software team on the Courseography project.",
+                "Worked on Prof. David Liu's Students Developing Software (SDS) team on the Courseography project.",
             image: '/images/sds-logo.jpg',
             projectLink: '/experience/sds',
+        },
+        {
+            title: 'Serv2U (Startup)',
+            subtitle: 'Full-Stack Developer ⋅ Jan 2023 - May 2023',
+            description:
+                'Helped develop an online marketplace for people to order meals made by homecooks and have them delivered to their doorstep.',
+            image: '/images/serv2u.jpg',
+            projectLink: '/experience/pointclickcare',
         },
         {
             title: 'Caspr',
@@ -145,14 +157,14 @@ export default function Projects() {
             image: '/images/easychat-ss.jpg',
             projectLink: 'https://github.com/jaeyonglee3/EasyChat',
         },
-        {
-            title: 'ScanEats',
-            subtitle: 'Python, TensorFlow, Flask, React',
-            description:
-                'A full-stack ML app built on a CNN I trained w/ TensorFlow to rate fruit freshness using the webcam.',
-            image: '/images/image-soon.jpg',
-            projectLink: 'https://github.com/jaeyonglee3/ScanEats',
-        },
+        // {
+        //     title: 'ScanEats',
+        //     subtitle: 'Python, TensorFlow, Flask, React',
+        //     description:
+        //         'A full-stack ML app built on a CNN I trained w/ TensorFlow to rate fruit freshness using the webcam.',
+        //     image: '/images/image-soon.jpg',
+        //     projectLink: 'https://github.com/jaeyonglee3/ScanEats',
+        // },
         {
             title: 'MelodyMatch',
             subtitle: 'Python, Plotly, Bottle Web Framework, Tkinter',
@@ -186,22 +198,22 @@ export default function Projects() {
             image: '/images/habitual.jpg',
             projectLink: 'https://github.com/jaeyonglee3/habitual-app',
         },
-        {
-            title: 'Coming Soon!',
-            subtitle: 'As of May 2025',
-            description:
-                "I'm working on a new full-stack project that implements RAG techniques for personalized learning experiences.",
-            image: '/images/coming-soon.jpg',
-            projectLink: '',
-        },
+        // {
+        //     title: 'Coming Soon!',
+        //     subtitle: 'As of June 2025',
+        //     description:
+        //         "I'm working on a new full-stack project that implements RAG techniques for personalized learning experiences.",
+        //     image: '/images/coming-soon.jpg',
+        //     projectLink: '',
+        // },
     ];
 
     return (
-        <Container name="Projects & Experience" centerContent py="60px" maxWidth="90vw">
-            <Heading mb="2">Projects & Experience</Heading>
-            <Text mb="6" fontSize="lg" textAlign="center">
+        <Container name="Projects & Experience" centerContent py="60px" maxWidth="85vw">
+            <Heading mb="6">Projects & Experience</Heading>
+            {/* <Text mb="6" fontSize="lg" textAlign="center">
                 Here, I've selected a few of my projects and experiences that I'm most proud of.
-            </Text>
+            </Text> */}
 
             <SimpleGrid spacing="20px" minChildWidth="300px" maxW="90vw">
                 {cards.map((card, index) => (
@@ -212,7 +224,7 @@ export default function Projects() {
             <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl">
                 <ModalOverlay bg="blackAlpha.800" backdropFilter="blur(3px)" />
                 <ModalContent bg="gray.200">
-                    <ModalCloseButton color="white" />
+                    <ModalCloseButton />
                     <ModalBody p="0">
                         <Image
                             src={selectedImage}

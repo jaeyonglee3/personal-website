@@ -9,14 +9,14 @@ const theme = extendTheme({
         colors: {
             bg: {
                 default: '#F7FAFC',
-                _dark: '#171923',
+                _dark: '#0a0b0f',
             },
         },
     },
     styles: {
         global: {
             'html, body': {
-                fontFamily: 'mundial, sans-serif',
+                fontFamily: 'Manrope, sans-serif',
                 fontWeight: 300,
                 fontStyle: 'normal',
                 bg: 'bg',
