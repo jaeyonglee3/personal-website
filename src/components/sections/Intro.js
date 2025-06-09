@@ -12,7 +12,7 @@ const imageGallery = [
     { src: '/images/gallery/2.jpg', rotate: 2 },
     { src: '/images/gallery/3.jpg', rotate: -2 },
     { src: '/images/gallery/4.jpg', rotate: 3 },
-    { src: '/images/gallery/5.jpg', rotate: -2 },
+    { src: '/images/gallery/drums.jpg', rotate: -2 },
 ];
 
 export default function Landing() {
