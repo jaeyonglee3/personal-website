@@ -10,7 +10,7 @@ const menuItems = ['About Me', 'Projects & Experience', 'Skills'];
 export default function Navbar() {
     const { colorMode } = useColorMode();
     const openResume = () => {
-        window.open('/Resume - Jaeyong Lee.pdf', '_blank');
+        window.open('/Jaeyong Lee Resume.pdf', '_blank');
     };
 
     return (
