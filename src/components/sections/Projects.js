@@ -157,14 +157,14 @@ export default function Projects() {
             image: '/images/easychat-ss.jpg',
             projectLink: 'https://github.com/jaeyonglee3/EasyChat',
         },
-        // {
-        //     title: 'ScanEats',
-        //     subtitle: 'Python, TensorFlow, Flask, React',
-        //     description:
-        //         'A full-stack ML app built on a CNN I trained w/ TensorFlow to rate fruit freshness using the webcam.',
-        //     image: '/images/image-soon.jpg',
-        //     projectLink: 'https://github.com/jaeyonglee3/ScanEats',
-        // },
+        {
+            title: 'ScanEats',
+            subtitle: 'Python, TensorFlow, Flask, React',
+            description:
+                'A full-stack ML app built on a CNN I trained w/ TensorFlow to rate fruit freshness using the webcam.',
+            image: '/images/scaneats.jpg',
+            projectLink: 'https://github.com/jaeyonglee3/ScanEats',
+        },
         {
             title: 'MelodyMatch',
             subtitle: 'Python, Plotly, Bottle Web Framework, Tkinter',
